@@ -1,0 +1,16 @@
+{
+  "name": "library_api",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "prod": "node app.js",
+    "dev": "nodemon app.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "express": "^5.1.0",
+    "nodemon": "^3.1.10"
+  }
+}
