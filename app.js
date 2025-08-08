@@ -1,5 +1,6 @@
 // calling in express to be used throughout the application
 const express = require('express');
+require('dotenv').config();
 
 // call in our router
 const testRoutes = require('./routes/testRoutes.js');
@@ -24,7 +25,9 @@ app.use((req, res, next) => {
 // finally, we point the app to where our routes live.
 app.use('/v1/test', testRoutes);
 
+const port = process.env.API_PORT || 3000
+
 // tell the API to start listening on a port we provide (which will eventually move to a .env file)
-app.listen(3000, () => {
-    console.log(`The API is now listening on port 3000.`)
+app.listen(port, () => {
+    console.log(`The API is now listening on port ${port}.`)
 });
