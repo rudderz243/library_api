@@ -1,6 +1,7 @@
 // calling in express to be used throughout the application
 const express = require('express');
 require('dotenv').config();
+const { connectToMongo } = require('./services/dbService.js');
 
 // call in our router
 const testRoutes = require('./routes/testRoutes.js');
@@ -26,6 +27,9 @@ app.use((req, res, next) => {
 app.use('/v1/test', testRoutes);
 
 const port = process.env.API_PORT || 3000
+
+// call the method from our dbService file to connect to our Mongo database
+connectToMongo();
 
 // tell the API to start listening on a port we provide (which will eventually move to a .env file)
 app.listen(port, () => {
