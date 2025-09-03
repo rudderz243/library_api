@@ -1,10 +1,11 @@
-// calling in express to be used throughout the application
+// calling in all required imports
 const express = require('express');
 require('dotenv').config();
 const { connectToMongo } = require('./services/dbService.js');
 
 // call in our router
 const testRoutes = require('./routes/testRoutes.js');
+const bookRoutes = require('./routes/bookRoutes.js');
 
 // setting up express using the default parameters
 const app = express();
@@ -25,6 +26,7 @@ app.use((req, res, next) => {
 // then we specify an area that we want the routes to live in (in this case /test)
 // finally, we point the app to where our routes live.
 app.use('/v1/test', testRoutes);
+app.use('/v1/books', bookRoutes);
 
 const port = process.env.API_PORT || 3000
 
