@@ -2,6 +2,7 @@
 const express = require('express');
 require('dotenv').config();
 const { connectToMongo } = require('./services/dbService.js');
+const { securityMiddlewares } = require('./middlewares/securityMiddleware.js');
 
 // call in our router
 const testRoutes = require('./routes/testRoutes.js');
@@ -12,6 +13,9 @@ const app = express();
 
 // calling in express.json middleware, so that our app can handle json
 app.use(express.json());
+
+// set up our security middleware
+securityMiddlewares(app);
 
 // log every request
 // the logger will look at the request, generate a response, then handle the next incoming request
