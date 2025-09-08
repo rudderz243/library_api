@@ -15,7 +15,7 @@ const getBooks = async (req, res) => {
   }
 };
 
-// GET: a single books
+// GET: a single book
 const getBook = async (req, res) => {
   // get the id of the book that the user is looking for, from the parameters
   const id = req.params.id;

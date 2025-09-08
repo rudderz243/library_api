@@ -1,0 +1,23 @@
+# specify what services we want to run when the compose file is called
+services:
+  # here we define the options to run our API
+  library_api:
+    # when running, we tell it to rebuild the image in case of any changes
+    build:
+      # here we tell it where to build from
+      context: ./backend
+    
+    # we tell it to expose these ports
+    ports:
+      # port on local pc : port in container
+      - "3000:3000"
+
+  library_frontend:
+    build:
+      context: ./frontend
+    ports:
+      - "5173:5173"
+    # specify what we need to wait for before running the container
+    depends_on:
+      # in this instance, we wait until the backend is up and running
+      - library_api
