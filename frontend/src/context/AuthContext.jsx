@@ -19,7 +19,12 @@ export function AuthProvider({children}) {
         so that we can check auth status anywhere, as well as handle the login/logout functions
         on the corresponding pages */
         <AuthContext.Provider value={{ isAuthenticated, login, logout }}>
-
+            {/* display any of the children */}
+            {children}
         </AuthContext.Provider>
     );
 };
+
+// setting it up so whenever we call useAuth(), it will use our AuthContext file
+// this also allows us to call all these different methods and variables in different files
+export const useAuth = () => useContext(AuthContext);
